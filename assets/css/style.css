@@ -1,12 +1,22 @@
 body {
     background-image: url("../images/battlefield.jpg");
     background-size: stretch;
-    color: #ffffff;
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h1 {
+	color: #000000;
 }
 
 .img-responsive {
     width: 200px;
     height: 175px;
+}
+
+.clash {
+	font-size: 20px;
 }
 
 
