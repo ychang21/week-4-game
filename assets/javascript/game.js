@@ -7,6 +7,7 @@ $(document).ready(function () {
     var counter; //defender variable
     var defHealth = 0; //defender health
     var startFight = false;
+    var ready = true;
     //player properties and values
     var player = [
         luke = {
@@ -118,23 +119,22 @@ $(document).ready(function () {
         $("#clash").on("click", function(){  
             console.log(yourFighter.name);
             console.log(yourFighter.attack);       
-            $(".battle").text("You have attacked with " + yourFighter.attack + " points!");
-            $(".battle").text("You were struck back with " + counter.counterAttack + " points!");
+            $(".battle1").text("You have attacked with " + yourFighter.attack + " points!");
+            $(".battle2").text("You were struck back with " + counter.counterAttack + " points!");
             fighterHealth = (yourFighter.health - counter.counterAttack);
             console.log(fighterHealth);
-            $(".battle").text(yourFighter.name + " has " + fighterHealth + " points left!");
             console.log(counter.name);
             console.log(counter.counterAttack);
             defHealth = (counter.health - yourFighter.attack);
             console.log(defHealth);
-            $(".battle").text(counter.name + " has " + defHealth + " points left!");
+            $(".status1").text(yourFighter.name + " has " + fighterHealth + " health points left!");
+            $(".status2").text(counter.name + " has " + defHealth + " health points left!");
             startFight = true;
         })
         if ((fighterHealth <= 0) && (startFight == true) ) {
             $(".battle").text("You have lost the battle!");
         } else if ((fighterHealth > 0) && (defHealth <= 0)) {
-            $(".battle").text("You have won your first match!");
-            $(".battle").text("Select a new opponent.");
+            $(".battle").text("You have won your first match! Select a new opponent.");
         }
     }
     //reset button
