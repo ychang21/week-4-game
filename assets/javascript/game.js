@@ -6,8 +6,10 @@ $(document).ready(function () {
     var defense = false;
     var counter; //defender variable
     var defHealth = 0; //defender health
-    var startFight = false;
-    var ready = true;
+    var ready = false;
+    var numAttack = 1;
+    var picCounter = 4;
+    var attackCheck = false;
     //player properties and values
     var player = [
         luke = {
@@ -28,13 +30,13 @@ $(document).ready(function () {
             name: "Rey",
             health: 120,
             attack: 8,
-            counterAttack: 20,
+            counterAttack: 15,
             image: "<img class='img-responsive' id='rey' data-health=120 src='assets/images/rey.jpeg' alt='Rey'>"
         },
         kylo = {
             name: "Kylo Ren",
             health: 180,
-            attack: 5,
+            attack: 7,
             counterAttack: 25,
             image: "<img class='img-responsive' id='kylo' data-health=180 src='assets/images/kyloren.jpg' alt='Kylo Ren'>"
         },
@@ -52,35 +54,43 @@ $(document).ready(function () {
     
     if (hasFighter == false) {
         $("#luke").on("click", function(){
-            $(".fighter").after(luke.name, luke.image, luke.health);
+            $(".fighter").append(luke.name, luke.image, luke.health);
             $(".ls").hide();
             yourFighter = player[0];
             $("#luke, #vader, #rey, #kylo").off("click");
             hasFighter = true;
+            fighterHealth = yourFighter.health;
+            picCounter--;
             pick2();
         });
         $("#vader").on("click", function(){
-            $(".fighter").after(vader.name, vader.image, vader.health);
+            $(".fighter").append(vader.name, vader.image, vader.health);
             $(".dv").hide();
             yourFighter = player[1];
             $("#luke, #vader, #rey, #kylo").off("click");
             hasFighter = true;
+            fighterHealth = yourFighter.health;
+            picCounter--;
             pick2();
         });
         $("#rey").on("click", function(){
-            $(".fighter").after(rey.name, rey.image, rey.health);
+            $(".fighter").append(rey.name, rey.image, rey.health);
             $(".rs").hide();
             yourFighter = player[2];
             $("#luke, #vader, #rey, #kylo").off("click");
             hasFighter = true;
+            fighterHealth = yourFighter.health;
+            picCounter--;
             pick2();
         });
         $("#kylo").on("click", function(){
-            $(".fighter").after(kylo.name, kylo.image, kylo.health);
+            $(".fighter").append(kylo.name, kylo.image, kylo.health);
             $(".kr").hide();
             yourFighter = player[3];
             $("#luke, #vader, #rey, #kylo").off("click");
             hasFighter = true;
+            fighterHealth = yourFighter.health;
+            picCounter--;
             pick2();
         });
     };
@@ -89,60 +99,100 @@ $(document).ready(function () {
     function pick2() {
     if (hasFighter == true) {
         $("#luke").on("click", function(){
-            $(".defender").after(luke.name, luke.image, luke.health);
+            $(".defender").append(luke.name, luke.image, luke.health);
             $(".ls").hide();
             counter = player[0];
+            defHealth = counter.health;
+            attackCheck = true;
+            picCounter--;
         });
         $("#vader").on("click", function(){
-            $(".defender").after(vader.name, vader.image, vader.health);
+            $(".defender").append(vader.name, vader.image, vader.health);
             $(".dv").hide();
             counter = player[1];
+            defHealth = counter.health;
+            attackCheck = true;
+            picCounter--;
         });
         $("#rey").on("click", function(){
-            $(".defender").after(rey.name, rey.image, rey.health);
+            $(".defender").append(rey.name, rey.image, rey.health);
             $(".rs").hide();
             counter = player[2];
+            defHealth = counter.health;
+            attackCheck = true;
+            picCounter--;
         });
         $("#kylo").on("click", function(){
-            $(".defender").after(kylo.name, kylo.image, kylo.health);
+            $(".defender").append(kylo.name, kylo.image, kylo.health);
             $(".kr").hide();
             counter = player[3];
+            defHealth = counter.health;
+            attackCheck = true;
+            picCounter--;
         });
     }
 
 };
 
     //attack button
-    //console.log prints out everything correctly but some of the text won't print to the page
 
-    function fight() {
-        $("#clash").on("click", function(){  
+        $("#clash").on("click", function(){ 
+            if (attackCheck == false) {
+                $(".battle1").text("No enemy selected!");
+                $(".battle2").empty();
+                $(".status1").empty();
+                $(".status2").empty();
+            } else {
             console.log(yourFighter.name);
             console.log(yourFighter.attack);       
-            $(".battle1").text("You have attacked with " + yourFighter.attack + " points!");
+            $(".battle1").text("You have attacked with " + (yourFighter.attack * numAttack) + " points!");
             $(".battle2").text("You were struck back with " + counter.counterAttack + " points!");
-            fighterHealth = (yourFighter.health - counter.counterAttack);
+            fighterHealth = (fighterHealth - counter.counterAttack);
             console.log(fighterHealth);
             console.log(counter.name);
             console.log(counter.counterAttack);
-            defHealth = (counter.health - yourFighter.attack);
+            defHealth = (defHealth - (yourFighter.attack * numAttack));
             console.log(defHealth);
-            $(".status1").text(yourFighter.name + " has " + fighterHealth + " health points left!");
-            $(".status2").text(counter.name + " has " + defHealth + " health points left!");
-            startFight = true;
-        })
-        if ((fighterHealth <= 0) && (startFight == true) ) {
-            $(".battle").text("You have lost the battle!");
+            $(".fighter").empty();
+            $(".defender").empty();
+            $(".fighter").append(yourFighter.name, yourFighter.image, fighterHealth);
+            $(".defender").append(counter.name, counter.image, defHealth);
+            numAttack++;
+        if ((fighterHealth <= 0)  
+            ){
+            $(".battle1").text("You have lost the battle!");
+            $(".battle2").text("Reset to start again");
+            $(".status1").empty();
+            $(".status2").empty();
+            numAttack = 1;
+            attackCheck = false;
         } else if ((fighterHealth > 0) && (defHealth <= 0)) {
-            $(".battle").text("You have won your first match! Select a new opponent.");
+            $(".battle1").text("You have won your match! Select a new opponent.");
+            $(".battle2").empty();
+            $(".status1").empty();
+            $(".status2").empty();
+            $(".defender").empty();
+            attackCheck = false;
+        } else if ((fighterHealth >= 0) && (picCounter == 0)) {
+            $(".battle1").text("You have won the battle!");
+            $(".battle2").text("Press Reset to play again");
+            $(".status1").empty();
+            $(".status2").empty();
+            $(".defender").empty();
+            numAttack = 1;
+            picCounter = 4;
+            attackCheck = false;
         }
-    }
+        }
+        })
+
+    // }
     //reset button
     $("#reset").on("click", function(){
         document.location.reload();
     })
 
-    fight();
+    // fight();
     pick1();
     
 
