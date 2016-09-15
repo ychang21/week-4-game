@@ -105,6 +105,7 @@ $(document).ready(function () {
             defHealth = counter.health;
             attackCheck = true;
             picCounter--;
+            $(".battle1").empty();
         });
         $("#vader").on("click", function(){
             $(".defender").append(vader.name, vader.image, vader.health);
@@ -113,6 +114,7 @@ $(document).ready(function () {
             defHealth = counter.health;
             attackCheck = true;
             picCounter--;
+            $(".battle1").empty();
         });
         $("#rey").on("click", function(){
             $(".defender").append(rey.name, rey.image, rey.health);
@@ -121,6 +123,7 @@ $(document).ready(function () {
             defHealth = counter.health;
             attackCheck = true;
             picCounter--;
+            $(".battle1").empty();
         });
         $("#kylo").on("click", function(){
             $(".defender").append(kylo.name, kylo.image, kylo.health);
@@ -129,6 +132,7 @@ $(document).ready(function () {
             defHealth = counter.health;
             attackCheck = true;
             picCounter--;
+            $(".battle1").empty();
         });
     }
 
