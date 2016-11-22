@@ -26,3 +26,6 @@ The enemy character only has Counter Attack Power and their Counter Attack Power
 The Health Points, Attack Power, and Counter Attack Power of each character are different.
 None of the characters in the game can heal or recover Health Points, so the point of the game is to pick a character and fight an enemy that has low Counter Attack Power first and build up your own Attack Power before you lose all your Health Points.
 Depending on game play, you can win or lose with any of the characters in the game.
+
+###Below is an image of the game.
+![RPG](assets/images/rpg.png)
