@@ -97,13 +97,14 @@ $(document).ready(function () {
 };
 
     function pick2() {
-    if (hasFighter == true) {
+    if (hasFighter == true && defense == false) {
         $("#luke").on("click", function(){
             $(".defender").append(luke.name, luke.image, luke.health);
             $(".ls").hide();
             counter = player[0];
             defHealth = counter.health;
             attackCheck = true;
+            defense = true;
             picCounter--;
             $(".battle1").empty();
         });
@@ -113,6 +114,7 @@ $(document).ready(function () {
             counter = player[1];
             defHealth = counter.health;
             attackCheck = true;
+            defense = true;
             picCounter--;
             $(".battle1").empty();
         });
@@ -122,6 +124,7 @@ $(document).ready(function () {
             counter = player[2];
             defHealth = counter.health;
             attackCheck = true;
+            defense = true;
             picCounter--;
             $(".battle1").empty();
         });
@@ -131,6 +134,7 @@ $(document).ready(function () {
             counter = player[3];
             defHealth = counter.health;
             attackCheck = true;
+            defense = true;
             picCounter--;
             $(".battle1").empty();
         });
@@ -141,7 +145,7 @@ $(document).ready(function () {
     //attack button
 
         $("#clash").on("click", function(){ 
-            if (attackCheck == false) {
+            if (attackCheck == false && defense == false) {
                 $(".battle1").text("No enemy selected!");
                 $(".battle2").empty();
                 $(".status1").empty();
@@ -177,6 +181,7 @@ $(document).ready(function () {
             $(".status2").empty();
             $(".defender").empty();
             attackCheck = false;
+            defense = false;
         } else if ((fighterHealth >= 0) && (picCounter == 0)) {
             $(".battle1").text("You have won the battle!");
             $(".battle2").text("Press Reset to play again");
@@ -186,6 +191,7 @@ $(document).ready(function () {
             numAttack = 1;
             picCounter = 4;
             attackCheck = false;
+            defense = false;
         }
         }
         })

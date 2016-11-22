@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Star Wars RPG</title>
     <meta charset="UTF-8">
@@ -10,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <script src="assets/javascript/game.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -17,7 +19,7 @@
                 <h1>Star Wars Battle!</h1>
                 <p>First, choose the character that you would like to play as.</p>
                 <p>Then, choose the character you would like to defeat.</p>
-                <p>To begin the battle, press Attack</p>
+                <p>To begin the battle, press Attack.</p>
                 <p>May the force be with you!</p>
             </div>
         </div>
@@ -29,17 +31,14 @@
         <div class="row character">
             <div class="col-md-3 ls">
             </div>
-                
             <div class=" col-md-3 dv">
-            </div>        
-                        
+            </div>
             <div class="col-md-3 rs">
-            </div>        
-                    
+            </div>
             <div class="col-md-3 kr">
-            </div>             
-        </div>    
-        <div class="row">
+            </div>
+        </div>
+        <!-- <div class="row">
             <h3>Your Fighter</h3>
             <div class="col-md-12 fighter">
             </div>
@@ -49,30 +48,47 @@
             <h3>Defender</h3>
             <div class="col-md-12 defender" >
             </div>
-        </div>
-        <div class="row">
-            <div class="battle1">
-                
+        </div> -->
+        <div class="row main">
+            <!-- <div class="col-md-1"></div> -->
+            <div class="col-md-4">
+                <h3 class="text-center good">Your Fighter</h3>
+            </div>
+            <div class="col-md-4 buttons">
+                <button class="btn btn-lg btn-warning" id="clash">Attack!</button>
+                <button class="btn btn-lg btn-primary" id="reset">Reset</button>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center evil">Defender</h3>
             </div>
         </div>
         <div class="row">
-            <div class="battle2">
-                
+            <div class="col-md-4">
+                <div class="fighter center-block">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="battle1 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="battle2 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="status1 text-center">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="status2 text-center">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="defender center-block">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="status1">
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="status2">
-                
-            </div>
-        </div>
-        <button class="btn btn-primary" id="reset">Reset</button>
-        
     </div>
-
 </body>
+
 </html>
