@@ -1,10 +1,11 @@
-#Star Wars RPG
+# Star Wars RPG
 
 [Star Wars RPG link](https://enigmatic-atoll-95453.herokuapp.com/
 )
 
-###One of my favorite movies of all time is Star Wars. It is the ultimate story of good vs evil and so it makes it a perfect theme for a battle game. This game was built with HTML, CSS, Bootstrap, Javascript, and jQuery.
+### One of my favorite movies of all time is Star Wars. It is the ultimate story of good vs evil and so it makes it a perfect theme for a battle game. This game was built with HTML, CSS, Bootstrap, Javascript, and jQuery.
 
+## Instructions
 At the start of the game the player will choose a character by clicking on the character's picture. The player will play as that character for the rest of the game.
 
 The player then chooses which enemy they will attack by clicking on that enemy's picture.
@@ -27,5 +28,9 @@ The Health Points, Attack Power, and Counter Attack Power of each character are 
 None of the characters in the game can heal or recover Health Points, so the point of the game is to pick a character and fight an enemy that has low Counter Attack Power first and build up your own Attack Power before you lose all your Health Points.
 Depending on game play, you can win or lose with any of the characters in the game.
 
-###Below is an image of the game.
+## Installation
+Download the zip or fork the repository and simply open the index.html on your browser.
+
+## Screenshot
+### Below is an image of the game.
 ![RPG](assets/images/rpg.png)
